@@ -133,26 +133,31 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: 0;
     }
-    .flat-view svg.lines line {
+    .flat-view svg.lines line, .flat-view svg.lines path {
       stroke: #999;
       stroke-width: 2;
+      fill: none;
     }
-    .flat-view svg.lines line.spouse {
-      stroke: #E91E63;
+    .flat-view svg.lines .spouse {
+      stroke: #ccc;
       stroke-width: 2;
     }
-    .flat-view svg.lines line.dashed {
+    .flat-view svg.lines .dashed {
       stroke-dasharray: 5,5;
+    }
+    .flat-view svg.lines .nephew {
+      stroke: #aaa;
+      stroke-dasharray: 4,4;
     }
     .flat-view .people {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       display: grid;
-      grid-template-columns: repeat(14, 1fr);
+      grid-template-columns: repeat(20, 1fr);
       grid-template-rows: repeat(5, auto);
-      gap: 15px 0;
+      gap: 20px 0;
       justify-items: center;
       padding: 10px;
     }
@@ -324,6 +329,23 @@
             <div class="person">
               <div class="photo female" style="background-image: url('thumbs/photos/m9.png')"></div>
               <div class="name">Michelle</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Siu-Kee -->
+        <div class="family-unit">
+          <div class="section-label">Popo's Brother</div>
+          <div class="couple has-children">
+            <div class="person">
+              <div class="photo male no-photo"></div>
+              <div class="name">Siu-Kee</div>
+            </div>
+          </div>
+          <div class="children single">
+            <div class="person">
+              <div class="photo male" style="background-image: url('thumbs/photos/m2.png')"></div>
+              <div class="name">Rex</div>
             </div>
           </div>
         </div>
@@ -591,7 +613,7 @@
             <div class="name">Popo Li</div>
           </div>
         </div>
-        <div class="couple row0" style="grid-column: 5 / span 2;">
+        <div class="couple row0" style="grid-column: 6 / span 2;">
           <div class="person" id="peter">
             <div class="photo male" style="background-image: url('thumbs/photos/m7.png')"></div>
             <div class="name">Peter</div>
@@ -601,7 +623,11 @@
             <div class="name">Cora</div>
           </div>
         </div>
-        <div class="couple row0" style="grid-column: 11 / span 2;">
+        <div class="person row0" id="siukee" style="grid-column: 9;">
+          <div class="photo male no-photo"></div>
+          <div class="name">Siu-Kee</div>
+        </div>
+        <div class="couple row0" style="grid-column: 15 / span 2;">
           <div class="person" id="yehyeh">
             <div class="photo male no-photo"></div>
             <div class="name">Yehyeh</div>
@@ -633,11 +659,19 @@
             <div class="name">Aunt Ma</div>
           </div>
         </div>
-        <div class="person row1" id="hong" style="grid-column: 5;">
+        <div class="person row1" id="hong" style="grid-column: 6;">
           <div class="photo male" style="background-image: url('thumbs/photos/m1.png')"></div>
           <div class="name">Hong</div>
         </div>
-        <div class="couple row1" style="grid-column: 7 / span 2;">
+        <div class="person row1" id="michelle" style="grid-column: 7;">
+          <div class="photo female" style="background-image: url('thumbs/photos/m9.png')"></div>
+          <div class="name">Michelle</div>
+        </div>
+        <div class="person row1" id="rex" style="grid-column: 9;">
+          <div class="photo male" style="background-image: url('thumbs/photos/m2.png')"></div>
+          <div class="name">Rex</div>
+        </div>
+        <div class="couple row1" style="grid-column: 11 / span 2;">
           <div class="person" id="ernest">
             <div class="photo male" style="background-image: url('thumbs/photos/f5.png')"></div>
             <div class="name">Ernest</div>
@@ -647,17 +681,17 @@
             <div class="name">Amy</div>
           </div>
         </div>
-        <div class="person row1" id="gooma2" style="grid-column: 10;">
+        <div class="person row1" id="gooma2" style="grid-column: 14;">
           <div class="photo female" style="background-image: url('thumbs/photos/f4.png')"></div>
           <div class="name">Gooma2</div>
         </div>
-        <div class="person row1" id="gooma3" style="grid-column: 13;">
+        <div class="person row1" id="gooma3" style="grid-column: 18;">
           <div class="photo female no-photo"></div>
           <div class="name">Gooma3</div>
         </div>
 
         <!-- ROW 2: Parents -->
-        <div class="couple row2" style="grid-column: 1 / span 2;">
+        <div class="couple row2" style="grid-column: 3 / span 2;">
           <div class="person" id="adrien">
             <div class="photo male" style="background-image: url('thumbs/photos/m3.png')"></div>
             <div class="name">Adrien</div>
@@ -667,7 +701,7 @@
             <div class="name">Ada</div>
           </div>
         </div>
-        <div class="couple row2" style="grid-column: 5 / span 2;">
+        <div class="couple row2" style="grid-column: 10 / span 2;">
           <div class="person" id="stanley">
             <div class="photo male" style="background-image: url('thumbs/photos/b1.png')"></div>
             <div class="name">Stanley</div>
@@ -677,7 +711,7 @@
             <div class="name">Angela</div>
           </div>
         </div>
-        <div class="couple row2" style="grid-column: 7 / span 2;">
+        <div class="couple row2" style="grid-column: 12 / span 2;">
           <div class="person" id="wilfred">
             <div class="photo male" style="background-image: url('thumbs/photos/b12.png')"></div>
             <div class="name">Wilfred</div>
@@ -687,7 +721,7 @@
             <div class="name">Mary</div>
           </div>
         </div>
-        <div class="couple row2" style="grid-column: 9 / span 2;">
+        <div class="couple row2" style="grid-column: 14 / span 2;">
           <div class="person" id="stewart">
             <div class="photo male" style="background-image: url('thumbs/photos/b10.png')"></div>
             <div class="name">Stewart</div>
@@ -697,11 +731,11 @@
             <div class="name">Mae</div>
           </div>
         </div>
-        <div class="person row2" id="ahfat" style="grid-column: 11;">
+        <div class="person row2" id="ahfat" style="grid-column: 16;">
           <div class="photo male" style="background-image: url('thumbs/photos/m14.png')"></div>
           <div class="name">AhFat</div>
         </div>
-        <div class="couple row2" style="grid-column: 12 / span 2;">
+        <div class="couple row2" style="grid-column: 18 / span 2;">
           <div class="person" id="keith">
             <div class="photo male" style="background-image: url('thumbs/photos/f1.png')"></div>
             <div class="name">Keith</div>
@@ -712,39 +746,41 @@
           </div>
         </div>
 
-        <!-- ROW 3: Children -->
-        <div class="person row3" id="siah" style="grid-column: 1;">
-          <div class="photo female" style="background-image: url('thumbs/photos/b3.png')"></div>
-          <div class="name">Si Ah</div>
-        </div>
-        <div class="person row3" id="zachary" style="grid-column: 6;">
-          <div class="photo male" style="background-image: url('thumbs/photos/b6.png')"></div>
-          <div class="name">Zachary</div>
-        </div>
-        <div class="person row3" id="xavier" style="grid-column: 7;">
-          <div class="photo male" style="background-image: url('thumbs/photos/b8.png')"></div>
-          <div class="name">Xavier</div>
-        </div>
-        <div class="person row3" id="sebastian" style="grid-column: 8;">
-          <div class="photo male" style="background-image: url('thumbs/photos/b4.png')"></div>
-          <div class="name">Sebastian</div>
-        </div>
-        <div class="person row3" id="kayley" style="grid-column: 9;">
-          <div class="photo female" style="background-image: url('thumbs/photos/b5.png')"></div>
-          <div class="name">Kayley</div>
-        </div>
-        <div class="person row3" id="chloe" style="grid-column: 10;">
-          <div class="photo female" style="background-image: url('thumbs/photos/b7.png')"></div>
-          <div class="name">Chloe</div>
-        </div>
-        <div class="person row3" id="natalie" style="grid-column: 12;">
-          <div class="photo female" style="background-image: url('thumbs/photos/m10.png')"></div>
-          <div class="name">Natalie</div>
-        </div>
-        <div class="person row3" id="cherry" style="grid-column: 14;">
+        <!-- ROW 2 continued: Cherry (Gooma3's daughter, same level as Man-Yi) -->
+        <div class="person row2" id="cherry" style="grid-column: 20;">
           <div class="photo female" style="background-image: url('thumbs/photos/m5.png')"></div>
           <div class="name">Cherry</div>
           <div class="aka">(Lai-Yi)</div>
+        </div>
+
+        <!-- ROW 3: Children -->
+        <div class="person row3" id="siah" style="grid-column: 3;">
+          <div class="photo female" style="background-image: url('thumbs/photos/b3.png')"></div>
+          <div class="name">Si Ah</div>
+        </div>
+        <div class="person row3" id="zachary" style="grid-column: 12;">
+          <div class="photo male" style="background-image: url('thumbs/photos/b6.png')"></div>
+          <div class="name">Zachary</div>
+        </div>
+        <div class="person row3" id="xavier" style="grid-column: 13;">
+          <div class="photo male" style="background-image: url('thumbs/photos/b8.png')"></div>
+          <div class="name">Xavier</div>
+        </div>
+        <div class="person row3" id="sebastian" style="grid-column: 14;">
+          <div class="photo male" style="background-image: url('thumbs/photos/b4.png')"></div>
+          <div class="name">Sebastian</div>
+        </div>
+        <div class="person row3" id="kayley" style="grid-column: 15;">
+          <div class="photo female" style="background-image: url('thumbs/photos/b5.png')"></div>
+          <div class="name">Kayley</div>
+        </div>
+        <div class="person row3" id="chloe" style="grid-column: 16;">
+          <div class="photo female" style="background-image: url('thumbs/photos/b7.png')"></div>
+          <div class="name">Chloe</div>
+        </div>
+        <div class="person row3" id="natalie" style="grid-column: 18;">
+          <div class="photo female" style="background-image: url('thumbs/photos/m10.png')"></div>
+          <div class="name">Natalie</div>
         </div>
 
         </div>
@@ -754,84 +790,77 @@
 
   <script>
     // ========== FLAT VIEW LINE DRAWING ==========
-    function getCenter(id) {
+    function getPos(id, position = 'center') {
       const el = document.getElementById(id);
       if (!el) return null;
       const rect = el.getBoundingClientRect();
       const container = document.querySelector('.flat-view .tree-container').getBoundingClientRect();
-      return {
-        x: rect.left + rect.width / 2 - container.left,
-        y: rect.top + rect.height / 2 - container.top
-      };
+      const x = rect.left + rect.width / 2 - container.left;
+      if (position === 'top') return { x, y: rect.top - container.top };
+      if (position === 'bottom') return { x, y: rect.bottom - container.top };
+      return { x, y: rect.top + rect.height / 2 - container.top };
     }
 
-    function getBottom(id) {
-      const el = document.getElementById(id);
-      if (!el) return null;
-      const rect = el.getBoundingClientRect();
-      const container = document.querySelector('.flat-view .tree-container').getBoundingClientRect();
-      return {
-        x: rect.left + rect.width / 2 - container.left,
-        y: rect.bottom - container.top
-      };
+    function drawPath(svg, points, classes = '') {
+      if (points.length < 2) return;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      let d = `M ${points[0].x} ${points[0].y}`;
+      for (let i = 1; i < points.length; i++) {
+        d += ` L ${points[i].x} ${points[i].y}`;
+      }
+      path.setAttribute('d', d);
+      if (classes) path.setAttribute('class', classes);
+      svg.appendChild(path);
     }
 
-    function getTop(id) {
-      const el = document.getElementById(id);
-      if (!el) return null;
-      const rect = el.getBoundingClientRect();
-      const container = document.querySelector('.flat-view .tree-container').getBoundingClientRect();
-      return {
-        x: rect.left + rect.width / 2 - container.left,
-        y: rect.top - container.top
-      };
+    function drawElbow(svg, from, to, classes = '') {
+      // Draw orthogonal elbow line: down from parent, horizontal, down to child
+      if (!from || !to) return;
+      const midY = from.y + (to.y - from.y) / 2;
+      drawPath(svg, [from, {x: from.x, y: midY}, {x: to.x, y: midY}, to], classes);
     }
 
-    function drawLine(svg, p1, p2, classes = '') {
-      if (!p1 || !p2) return;
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', p1.x);
-      line.setAttribute('y1', p1.y);
-      line.setAttribute('x2', p2.x);
-      line.setAttribute('y2', p2.y);
-      if (classes) line.setAttribute('class', classes);
-      svg.appendChild(line);
-    }
-
-    function drawParentChild(svg, parent1, parent2, children, dashed = false) {
-      const p1 = getBottom(parent1);
-      const p2 = parent2 ? getBottom(parent2) : p1;
+    function drawParentChild(svg, parent1, parent2, children, classes = '') {
+      const p1 = getPos(parent1, 'bottom');
+      const p2 = parent2 ? getPos(parent2, 'bottom') : p1;
       if (!p1) return;
 
       const midX = parent2 ? (p1.x + p2.x) / 2 : p1.x;
-      const midY = p1.y + 15;
+      const dropY = p1.y + 12;
 
-      drawLine(svg, { x: midX, y: p1.y }, { x: midX, y: midY }, dashed ? 'dashed' : '');
+      // Drop line from parents
+      drawPath(svg, [{x: midX, y: p1.y}, {x: midX, y: dropY}], classes);
 
-      if (children.length > 1) {
-        const childPositions = children.map(c => getTop(c)).filter(Boolean);
-        if (childPositions.length > 0) {
-          const leftX = Math.min(...childPositions.map(p => p.x));
-          const rightX = Math.max(...childPositions.map(p => p.x));
-          const barY = midY + 10;
-          drawLine(svg, { x: midX, y: midY }, { x: midX, y: barY }, dashed ? 'dashed' : '');
-          drawLine(svg, { x: leftX, y: barY }, { x: rightX, y: barY }, dashed ? 'dashed' : '');
-          childPositions.forEach(cp => {
-            drawLine(svg, { x: cp.x, y: barY }, cp, dashed ? 'dashed' : '');
-          });
-        }
-      } else if (children.length === 1) {
-        const cp = getTop(children[0]);
-        if (cp) drawLine(svg, { x: midX, y: midY }, cp, dashed ? 'dashed' : '');
+      const childPositions = children.map(c => getPos(c, 'top')).filter(Boolean);
+      if (childPositions.length === 0) return;
+
+      // Calculate bar position (halfway between parent drop and children)
+      const childTopY = Math.min(...childPositions.map(p => p.y));
+      const barY = dropY + (childTopY - dropY) / 2;
+
+      if (childPositions.length > 1) {
+        const leftX = Math.min(...childPositions.map(p => p.x));
+        const rightX = Math.max(...childPositions.map(p => p.x));
+
+        // Vertical to bar, horizontal bar, vertical to each child
+        drawPath(svg, [{x: midX, y: dropY}, {x: midX, y: barY}], classes);
+        drawPath(svg, [{x: leftX, y: barY}, {x: rightX, y: barY}], classes);
+        childPositions.forEach(cp => {
+          drawPath(svg, [{x: cp.x, y: barY}, cp], classes);
+        });
+      } else {
+        // Single child - elbow line
+        const cp = childPositions[0];
+        drawPath(svg, [{x: midX, y: dropY}, {x: midX, y: barY}, {x: cp.x, y: barY}, cp], classes);
       }
     }
 
-    function drawSpouse(svg, id1, id2) {
-      const p1 = getCenter(id1);
-      const p2 = getCenter(id2);
-      if (p1 && p2) {
-        drawLine(svg, p1, p2, 'spouse');
-      }
+    function drawNephew(svg, fromId, toId) {
+      // Draw dashed nephew connection
+      const from = getPos(fromId, 'bottom');
+      const to = getPos(toId, 'top');
+      if (!from || !to) return;
+      drawElbow(svg, from, to, 'nephew');
     }
 
     function drawLines() {
@@ -839,22 +868,10 @@
       if (!svg) return;
       svg.innerHTML = '';
 
-      // Spouse connections
-      drawSpouse(svg, 'ham', 'popo');
-      drawSpouse(svg, 'peter', 'cora');
-      drawSpouse(svg, 'yehyeh', 'mama');
-      drawSpouse(svg, 'yan', 'auntfun');
-      drawSpouse(svg, 'unclema', 'auntma');
-      drawSpouse(svg, 'ernest', 'amy');
-      drawSpouse(svg, 'adrien', 'ada');
-      drawSpouse(svg, 'stanley', 'angela');
-      drawSpouse(svg, 'wilfred', 'mary');
-      drawSpouse(svg, 'stewart', 'mae');
-      drawSpouse(svg, 'keith', 'manyi');
-
-      // Parent-child connections
+      // Parent-child connections (drawn first, behind everything)
       drawParentChild(svg, 'ham', 'popo', ['amy']);
-      drawParentChild(svg, 'peter', 'cora', ['hong']);
+      drawParentChild(svg, 'peter', 'cora', ['hong', 'michelle']);
+      drawParentChild(svg, 'siukee', null, ['rex']);
       drawParentChild(svg, 'yehyeh', 'mama', ['gooma2', 'ernest', 'gooma3']);
       drawParentChild(svg, 'unclema', 'auntma', ['ada']);
       drawParentChild(svg, 'ernest', 'amy', ['stanley', 'mary', 'stewart']);
@@ -863,7 +880,10 @@
       drawParentChild(svg, 'stewart', 'mae', ['kayley', 'chloe']);
       drawParentChild(svg, 'gooma3', null, ['manyi', 'cherry']);
       drawParentChild(svg, 'keith', 'manyi', ['natalie']);
-      drawParentChild(svg, 'gooma2', null, ['ahfat'], true);
+      drawParentChild(svg, 'gooma2', null, ['ahfat'], 'dashed');
+
+      // Nephew connection (Popo -> Yan)
+      drawNephew(svg, 'popo', 'yan');
     }
 
     // ========== CYCLING TOGGLE FUNCTIONS ==========
