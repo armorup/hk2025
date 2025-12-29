@@ -3,54 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chan Li Family Tree</title>
+  <title>Chan Li Tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f5f5f5;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8f6f3;
       padding: 20px;
       min-height: 100vh;
     }
-    h1 { text-align: center; margin-bottom: 20px; color: #333; font-size: 22px; }
 
-    /* Toggle controls */
-    .controls {
-      position: fixed;
-      top: 10px;
-      right: 10px;
+    /* Header with controls */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .title-block {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      z-index: 100;
-      background: rgba(255,255,255,0.95);
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .toggle-group {
+    h1 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #2c2c2c;
+      letter-spacing: 0.5px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .controls {
       display: flex;
-      gap: 4px;
+      gap: 8px;
     }
-    .toggle-label {
-      font-size: 11px;
-      color: #666;
-      margin-bottom: 2px;
-    }
-    .toggle-btn {
-      padding: 6px 12px;
+    .icon-btn {
+      width: 36px;
+      height: 36px;
       border: 2px solid #333;
       background: #fff;
       cursor: pointer;
-      font-size: 12px;
-      border-radius: 4px;
+      font-size: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .toggle-btn.active {
-      background: #333;
-      color: #fff;
-    }
-    .toggle-btn:hover:not(.active) {
+    .icon-btn:hover {
       background: #eee;
+    }
+    .icon-btn:active {
+      background: #ddd;
+    }
+
+    /* View modes */
+    .tree-wrapper {
+      width: 100%;
+    }
+
+    /* Scroll mode - horizontal scroll */
+    body.view-scroll .tree-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    body.view-scroll .nested-view .tree,
+    body.view-scroll .flat-view .tree-container {
+      min-width: 900px;
+    }
+
+    /* Scale mode - shrink to fit */
+    body.view-scale .tree-wrapper {
+      overflow: hidden;
+    }
+    body.view-scale .nested-view .tree,
+    body.view-scale .flat-view .tree-container {
+      transform-origin: top center;
+    }
+
+    /* Stack mode - vertical layout */
+    body.view-stack .nested-view .row {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    body.view-stack .nested-view .spacer {
+      display: none;
+    }
+    body.view-stack .flat-view .people {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    body.view-stack .flat-view .couple,
+    body.view-stack .flat-view .person {
+      grid-column: auto !important;
+    }
+    body.view-stack .flat-view svg.lines {
+      display: none;
     }
 
     /* Common photo styles */
@@ -72,14 +132,15 @@
       background: #eee;
     }
     .name {
+      font-family: 'Inter', sans-serif;
       font-size: 9px;
       font-weight: 500;
       text-align: center;
       max-width: 60px;
-      color: #333;
-      line-height: 1.1;
+      color: #2c2c2c;
+      line-height: 1.2;
     }
-    .aka { font-size: 7px; color: #666; font-style: italic; }
+    .aka { font-size: 7px; color: #777; font-style: italic; }
     .person {
       display: flex;
       flex-direction: column;
@@ -232,25 +293,19 @@
   </style>
 </head>
 <body>
-  <div class="controls">
-    <div>
-      <div class="toggle-label">Layout</div>
-      <div class="toggle-group">
-        <button class="toggle-btn active" data-layout="nested">Nested</button>
-        <button class="toggle-btn" data-layout="flat">Flat</button>
-      </div>
+  <div class="header">
+    <div class="title-block">
+      <h1>Chan Li Tree</h1>
+      <div class="subtitle">HK Dinner 2026</div>
     </div>
-    <div>
-      <div class="toggle-label">Style</div>
-      <div class="toggle-group">
-        <button class="toggle-btn active" data-style="photos">Sketch</button>
-        <button class="toggle-btn" data-style="doodles">Doodle</button>
-      </div>
+    <div class="controls">
+      <button class="icon-btn" id="layoutBtn" title="Layout: Nested/Flat">⊞</button>
+      <button class="icon-btn" id="styleBtn" title="Style: Sketch/Doodle">👤</button>
+      <button class="icon-btn" id="viewBtn" title="View: Scroll/Scale/Stack">◀▶</button>
     </div>
   </div>
 
-  <h1>Chan Li Family Tree</h1>
-
+  <div class="tree-wrapper">
   <!-- ========== NESTED VIEW ========== -->
   <div class="nested-view active">
     <div class="tree">
@@ -727,6 +782,7 @@
         </div>
     </div>
   </div>
+  </div><!-- end tree-wrapper -->
 
   <script>
     // ========== FLAT VIEW LINE DRAWING ==========
@@ -842,51 +898,101 @@
       drawParentChild(svg, 'gooma2', null, ['ahfat'], true);
     }
 
-    // ========== TOGGLE FUNCTIONS ==========
+    // ========== CYCLING TOGGLE FUNCTIONS ==========
+    const layouts = ['nested', 'flat'];
+    const styles = ['photos', 'doodles'];
+    const views = ['scroll', 'scale', 'stack'];
+    const viewLabels = { scroll: '◀▶', scale: '⤢', stack: '▼' };
+    const layoutLabels = { nested: '⊞', flat: '≡' };
+    const styleLabels = { photos: '👤', doodles: '😀' };
+
+    let currentLayout = 'nested';
+    let currentStyle = 'photos';
+    let currentView = 'scroll';
+
     function setLayout(layout) {
-      document.querySelectorAll('[data-layout]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.layout === layout);
-      });
+      currentLayout = layout;
+      document.getElementById('layoutBtn').textContent = layoutLabels[layout];
       document.querySelector('.nested-view').classList.toggle('active', layout === 'nested');
       document.querySelector('.flat-view').classList.toggle('active', layout === 'flat');
       localStorage.setItem('treeLayout', layout);
-
       if (layout === 'flat') {
         setTimeout(drawLines, 50);
       }
     }
 
     function setStyle(style) {
-      document.querySelectorAll('[data-style]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.style === style);
-      });
-
+      currentStyle = style;
+      document.getElementById('styleBtn').textContent = styleLabels[style];
       document.querySelectorAll('.photo[style*="background-image"]').forEach(el => {
         const s = el.getAttribute('style');
         const newStyle = s.replace(/thumbs\/(photos|doodles)\//, `thumbs/${style}/`);
         el.setAttribute('style', newStyle);
       });
-
       localStorage.setItem('treeStyle', style);
     }
 
+    function setView(view) {
+      currentView = view;
+      document.getElementById('viewBtn').textContent = viewLabels[view];
+      document.body.classList.remove('view-scroll', 'view-scale', 'view-stack');
+      document.body.classList.add('view-' + view);
+      localStorage.setItem('treeView', view);
+
+      // Apply scale if needed
+      if (view === 'scale') {
+        applyScale();
+      }
+      if (currentLayout === 'flat') {
+        setTimeout(drawLines, 50);
+      }
+    }
+
+    function applyScale() {
+      const wrapper = document.querySelector('.tree-wrapper');
+      const content = document.querySelector('.nested-view.active .tree, .flat-view.active .tree-container');
+      if (!content) return;
+
+      const wrapperWidth = wrapper.clientWidth;
+      const contentWidth = content.scrollWidth || 900;
+      const scale = Math.min(1, wrapperWidth / contentWidth);
+      content.style.transform = `scale(${scale})`;
+    }
+
+    function cycleLayout() {
+      const idx = layouts.indexOf(currentLayout);
+      setLayout(layouts[(idx + 1) % layouts.length]);
+    }
+
+    function cycleStyle() {
+      const idx = styles.indexOf(currentStyle);
+      setStyle(styles[(idx + 1) % styles.length]);
+    }
+
+    function cycleView() {
+      const idx = views.indexOf(currentView);
+      setView(views[(idx + 1) % views.length]);
+    }
+
     // Event listeners
-    document.querySelectorAll('[data-layout]').forEach(btn => {
-      btn.addEventListener('click', () => setLayout(btn.dataset.layout));
-    });
-    document.querySelectorAll('[data-style]').forEach(btn => {
-      btn.addEventListener('click', () => setStyle(btn.dataset.style));
-    });
+    document.getElementById('layoutBtn').addEventListener('click', cycleLayout);
+    document.getElementById('styleBtn').addEventListener('click', cycleStyle);
+    document.getElementById('viewBtn').addEventListener('click', cycleView);
 
     // Load saved preferences
     document.addEventListener('DOMContentLoaded', () => {
       const savedLayout = localStorage.getItem('treeLayout') || 'nested';
       const savedStyle = localStorage.getItem('treeStyle') || 'photos';
+      const savedView = localStorage.getItem('treeView') || 'scroll';
       setLayout(savedLayout);
       setStyle(savedStyle);
+      setView(savedView);
     });
 
-    window.addEventListener('resize', drawLines);
+    window.addEventListener('resize', () => {
+      if (currentView === 'scale') applyScale();
+      if (currentLayout === 'flat') drawLines();
+    });
   </script>
 </body>
 </html>
