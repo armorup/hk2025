@@ -66,51 +66,15 @@
       background: #ddd;
     }
 
-    /* View modes */
+    /* Tree wrapper - pannable/zoomable on mobile */
     .tree-wrapper {
       width: 100%;
-    }
-
-    /* Scroll mode - horizontal scroll */
-    body.view-scroll .tree-wrapper {
-      overflow-x: auto;
+      overflow: auto;
       -webkit-overflow-scrolling: touch;
     }
-    body.view-scroll .nested-view .tree,
-    body.view-scroll .flat-view .tree-container {
+    .nested-view .tree,
+    .flat-view .tree-container {
       min-width: 900px;
-    }
-
-    /* Scale mode - shrink to fit */
-    body.view-scale .tree-wrapper {
-      overflow: hidden;
-    }
-    body.view-scale .nested-view .tree,
-    body.view-scale .flat-view .tree-container {
-      transform-origin: top center;
-    }
-
-    /* Stack mode - vertical layout */
-    body.view-stack .nested-view .row {
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-    body.view-stack .nested-view .spacer {
-      display: none;
-    }
-    body.view-stack .flat-view .people {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    body.view-stack .flat-view .couple,
-    body.view-stack .flat-view .person {
-      grid-column: auto !important;
-    }
-    body.view-stack .flat-view svg.lines {
-      display: none;
     }
 
     /* Common photo styles */
@@ -301,7 +265,6 @@
     <div class="controls">
       <button class="icon-btn" id="layoutBtn" title="Layout: Nested/Flat">⊞</button>
       <button class="icon-btn" id="styleBtn" title="Style: Sketch/Doodle">👤</button>
-      <button class="icon-btn" id="viewBtn" title="View: Scroll/Scale/Stack">◀▶</button>
     </div>
   </div>
 
@@ -901,14 +864,11 @@
     // ========== CYCLING TOGGLE FUNCTIONS ==========
     const layouts = ['nested', 'flat'];
     const styles = ['photos', 'doodles'];
-    const views = ['scroll', 'scale', 'stack'];
-    const viewLabels = { scroll: '◀▶', scale: '⤢', stack: '▼' };
     const layoutLabels = { nested: '⊞', flat: '≡' };
     const styleLabels = { photos: '👤', doodles: '😀' };
 
     let currentLayout = 'nested';
     let currentStyle = 'photos';
-    let currentView = 'scroll';
 
     function setLayout(layout) {
       currentLayout = layout;
@@ -932,33 +892,6 @@
       localStorage.setItem('treeStyle', style);
     }
 
-    function setView(view) {
-      currentView = view;
-      document.getElementById('viewBtn').textContent = viewLabels[view];
-      document.body.classList.remove('view-scroll', 'view-scale', 'view-stack');
-      document.body.classList.add('view-' + view);
-      localStorage.setItem('treeView', view);
-
-      // Apply scale if needed
-      if (view === 'scale') {
-        applyScale();
-      }
-      if (currentLayout === 'flat') {
-        setTimeout(drawLines, 50);
-      }
-    }
-
-    function applyScale() {
-      const wrapper = document.querySelector('.tree-wrapper');
-      const content = document.querySelector('.nested-view.active .tree, .flat-view.active .tree-container');
-      if (!content) return;
-
-      const wrapperWidth = wrapper.clientWidth;
-      const contentWidth = content.scrollWidth || 900;
-      const scale = Math.min(1, wrapperWidth / contentWidth);
-      content.style.transform = `scale(${scale})`;
-    }
-
     function cycleLayout() {
       const idx = layouts.indexOf(currentLayout);
       setLayout(layouts[(idx + 1) % layouts.length]);
@@ -969,28 +902,19 @@
       setStyle(styles[(idx + 1) % styles.length]);
     }
 
-    function cycleView() {
-      const idx = views.indexOf(currentView);
-      setView(views[(idx + 1) % views.length]);
-    }
-
     // Event listeners
     document.getElementById('layoutBtn').addEventListener('click', cycleLayout);
     document.getElementById('styleBtn').addEventListener('click', cycleStyle);
-    document.getElementById('viewBtn').addEventListener('click', cycleView);
 
     // Load saved preferences
     document.addEventListener('DOMContentLoaded', () => {
       const savedLayout = localStorage.getItem('treeLayout') || 'nested';
       const savedStyle = localStorage.getItem('treeStyle') || 'photos';
-      const savedView = localStorage.getItem('treeView') || 'scroll';
       setLayout(savedLayout);
       setStyle(savedStyle);
-      setView(savedView);
     });
 
     window.addEventListener('resize', () => {
-      if (currentView === 'scale') applyScale();
       if (currentLayout === 'flat') drawLines();
     });
   </script>
