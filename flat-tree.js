@@ -346,9 +346,11 @@ function renderFlatTree(container, data, style = 'photos') {
 
     const name = document.createElement('div');
     name.classList.add('name');
-    // Use first name only, but keep full name for Aunt/Uncle
+    // Use first name only, but keep full name for Aunt/Uncle or short names like "Si Ah"
     const firstName = person.name.split(' ')[0];
-    const displayName = (firstName === 'Aunt' || firstName === 'Uncle') ? person.name : firstName;
+    const isTitle = (firstName === 'Aunt' || firstName === 'Uncle');
+    const isShortFullName = person.name.length <= 8;
+    const displayName = (isTitle || isShortFullName) ? person.name : firstName;
     name.textContent = displayName;
 
     div.appendChild(photo);
