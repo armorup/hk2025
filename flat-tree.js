@@ -6,10 +6,10 @@ const LAYOUT = {
   personWidth: 58,
   personHeight: 78,
   coupleGap: -6,      // Negative = partners overlap/touch (horizontal)
-  siblingGap: 12,     // Vertical gap between siblings
-  familyGap: 25,      // Vertical gap between family units in same generation
-  generationGap: 100, // Horizontal gap between generations
-  padding: 20
+  siblingGap: 6,      // Vertical gap between siblings
+  familyGap: 12,      // Vertical gap between family units in same generation
+  generationGap: 70,  // Horizontal gap between generations
+  padding: 12
 };
 
 class FamilyTreeLayout {
