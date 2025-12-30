@@ -32,7 +32,7 @@
     {"id": "F4", "name": "Gooma2 Chan", "gender": "F"},
     {"id": "F5", "name": "Ernest Chan", "gender": "M"},
     {"id": "F6", "name": "Amy Chan", "gender": "F"},
-    {"id": "F7", "name": "Uncle Yan", "gender": "M"},
+    {"id": "F7", "name": "Yan", "gender": "M"},
     {"id": "X1", "name": "Popo Li", "gender": "F", "inPhoto": false},
     {"id": "X2", "name": "Ham Li", "gender": "M", "inPhoto": false},
     {"id": "X3", "name": "Gooma3 Chan", "gender": "F", "inPhoto": false},
