@@ -344,8 +344,8 @@ function renderFlatTree(container, data, style = 'photos') {
 
     const name = document.createElement('div');
     name.classList.add('name');
-    // Use full name for short names, first name for long names
-    const displayName = person.name.length <= 12 ? person.name : person.name.split(' ')[0];
+    // Use first name only in flat view
+    const displayName = person.name.split(' ')[0];
     name.textContent = displayName;
 
     div.appendChild(photo);
