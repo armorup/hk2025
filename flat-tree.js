@@ -351,6 +351,13 @@ function renderFlatTree(container, data, style = 'photos') {
     div.appendChild(photo);
     div.appendChild(name);
 
+    if (person.chinese) {
+      const chinese = document.createElement('div');
+      chinese.classList.add('chinese');
+      chinese.textContent = person.chinese;
+      div.appendChild(chinese);
+    }
+
     if (person.aka) {
       const aka = document.createElement('div');
       aka.classList.add('aka');
