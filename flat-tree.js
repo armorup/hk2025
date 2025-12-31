@@ -78,6 +78,19 @@ class FamilyTreeLayout {
           ]
         },
         {
+          id: 'unclema-auntma',
+          partners: ['F3', 'F2'],
+          childUnits: [
+            {
+              id: 'adrien-ada',
+              partners: ['M3', 'M4'],
+              childUnits: [
+                { id: 'siah', single: 'B3', childUnits: [] }
+              ]
+            }
+          ]
+        },
+        {
           id: 'peter-cora',
           partners: ['M7', 'M8'],
           childUnits: [
@@ -96,19 +109,6 @@ class FamilyTreeLayout {
           id: 'yehyeh-mama',
           partners: ['X4', 'X5'],
           childUnits: [
-            {
-              id: 'unclema-auntma',
-              partners: ['F3', 'F2'],
-              childUnits: [
-                {
-                  id: 'adrien-ada',
-                  partners: ['M3', 'M4'],
-                  childUnits: [
-                    { id: 'siah', single: 'B3', childUnits: [] }
-                  ]
-                }
-              ]
-            },
             {
               id: 'ernest-amy',
               partners: ['F5', 'F6'],
@@ -137,7 +137,8 @@ class FamilyTreeLayout {
               id: 'gooma2',
               single: 'F4',
               childUnits: [
-                { id: 'ahfat', single: 'M14', childUnits: [], dashed: true }
+                { id: 'eldestson-daisou', partners: ['X7', 'M12'], childUnits: [], dashed: true },
+                { id: 'ahfat-yeesou', partners: ['M14', 'M13'], childUnits: [], dashed: true }
               ]
             },
             {
@@ -257,7 +258,7 @@ class FamilyTreeLayout {
       { parents: ['B10', 'B9'], children: ['B5', 'B7'], type: 'normal' },
       { parents: ['X3'], children: ['M6', 'M5'], type: 'normal' },
       { parents: ['F1', 'M6'], children: ['M10'], type: 'normal' },
-      { parents: ['F4'], children: ['M14'], type: 'dashed' }
+      { parents: ['F4'], children: ['X7', 'M14'], type: 'dashed' }
     ];
 
     familyConnections.forEach(conn => {

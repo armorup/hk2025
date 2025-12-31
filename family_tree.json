@@ -38,7 +38,9 @@
     {"id": "X3", "name": "Gooma3 Chan", "gender": "F", "inPhoto": false},
     {"id": "X4", "name": "yehyeh", "gender": "M", "inPhoto": false},
     {"id": "X5", "name": "mama", "gender": "F", "inPhoto": false},
-    {"id": "X6", "name": "Siu-Kee", "gender": "M", "inPhoto": false}
+    {"id": "X6", "name": "Siu-Kee", "gender": "M", "inPhoto": false},
+    {"id": "X7", "name": "Gooma2's eldest son", "gender": "M", "inPhoto": false},
+    {"id": "X8", "name": "Popo's parents", "gender": "M", "inPhoto": false}
   ],
   "families": [
     {"partners": ["F5", "F6"], "children": ["B1", "B10", "B11"], "note": "Ernest & Amy -> Stanley, Stewart, Mary"},
@@ -50,13 +52,15 @@
     {"partners": ["M3", "M4"], "children": ["B3"], "note": "Adrien & Ada -> Si Ah"},
     {"partners": ["F1", "M6"], "children": ["M10"], "note": "Keith & Man-Yi -> Natalie"},
     {"partners": ["F7", "M11"], "children": [], "note": "Yan & Aunt Fun"},
+    {"partners": ["X8"], "children": ["X1", "F3"], "note": "Popo's parents -> Popo, Uncle Ma (siblings)"},
     {"partners": ["X2", "X1"], "children": ["F6"], "note": "Ham & Popo -> Amy"},
     {"partners": ["X4", "X5"], "children": ["F4", "X3", "F5"], "note": "yehyeh & mama -> Gooma2, Gooma3, Ernest"},
     {"partners": ["X3"], "children": ["M6", "M5"], "note": "Gooma3 -> Man-Yi, Cherry"},
     {"partners": ["M14", "M13"], "children": [], "note": "AhFat & Yee-sou"},
-    {"partners": ["F4"], "children": ["M14"], "note": "Gooma2 -> AhFat (2nd son)"},
+    {"partners": ["F4"], "children": ["X7", "M14"], "note": "Gooma2 -> eldest son, AhFat (2nd son)"},
+    {"partners": ["X7", "M12"], "children": [], "note": "Gooma2's eldest son & Dai-sou"},
     {"partners": ["X6"], "children": ["M2"], "note": "Siu-Kee -> Rex"}
   ],
-  "hidden": ["M12"],
-  "notes": "Hidden: M12 Dai-sou (Gooma2's eldest DIL - eldest son unknown). X-prefix = connectors not in photo."
+  "hidden": [],
+  "notes": "X-prefix = connectors not in photo. X7 = Gooma2's eldest son (name unknown). X8 = Popo's parents (shows Popo & Uncle Ma as siblings)."
 }

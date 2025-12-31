@@ -15,7 +15,7 @@ Create a simple family tree diagram for dinner guests based on a group photo.
 - B1-B12: Back row, left to right
 - M1-M14: Middle row, left to right
 - F1-F7: Front row, left to right
-- X-prefix: Connector people not in photo (Popo, Gooma3)
+- X-prefix: Connector people not in photo (Popo, Gooma3, Gooma2's eldest son)
 
 ## family_tree.json Schema
 ```json
@@ -34,10 +34,12 @@ Create a simple family tree diagram for dinner guests based on a group photo.
 - See sample_reference.png for layout inspiration
 
 ## Hidden People
-These have unknown relationships - unhide when details filled in:
-- M2 (Rex), M9 (Michelle) - relationship unknown
-- M12 (NAME1), M13 (NAME2), F3 (NAME3) - names unknown
-- F4 (Gooma2), M14 (AhFat) - connection unclear
+Currently no hidden people. All relationships resolved.
+
+Previously hidden (now shown):
+- M9 (Michelle) - Peter & Cora's daughter
+- M12 (Dai-sou) - Gooma2's eldest DIL (eldest son name unknown, shown as X7)
+- M13 (Yee-sou) - Gooma2's 2nd DIL, AhFat's wife
 
 ## Workflow
 1. Update relationships.md with new info
