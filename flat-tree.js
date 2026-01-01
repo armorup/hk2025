@@ -3,13 +3,13 @@
 // LEFT-TO-RIGHT orientation: oldest on left, youngest on right
 
 const LAYOUT = {
-  personWidth: 58,
-  personHeight: 78,
-  coupleGap: -14,     // Negative = partners overlap (matches grid view)
-  siblingGap: 6,      // Vertical gap between siblings
-  familyGap: 12,      // Vertical gap between family units in same generation
-  generationGap: 70,  // Horizontal gap between generations
-  padding: 12
+  personWidth: 48,
+  personHeight: 65,
+  coupleGap: -12,     // Negative = partners overlap (matches grid view)
+  siblingGap: 4,      // Vertical gap between siblings
+  familyGap: 8,       // Vertical gap between family units in same generation
+  generationGap: 55,  // Horizontal gap between generations
+  padding: 10
 };
 
 class FamilyTreeLayout {
