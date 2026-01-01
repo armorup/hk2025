@@ -118,11 +118,7 @@
       overflow: auto;
       -webkit-overflow-scrolling: touch;
     }
-    .nested-view .tree {
-      transform-origin: top left;
-      transition: transform 0.2s ease;
-    }
-    .flat-view .tree-container {
+        .flat-view .tree-container {
       min-width: 700px;
     }
     .flat-view .photo {
@@ -211,21 +207,18 @@
 
     /* ========== NESTED LAYOUT ========== */
     .nested-view { display: none; }
-    .nested-view.active {
-      display: flex;
-      justify-content: center;
-    }
+    .nested-view.active { display: block; }
 
     .nested-view .tree {
       display: inline-flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 5px;
       position: relative;
     }
     .nested-view .row {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: flex-start;
       gap: 30px;
     }
@@ -734,29 +727,12 @@
     // ========== SCALE NESTED TREE TO FIT ==========
     function scaleNestedTreeToFit() {
       const tree = document.querySelector('.nested-view .tree');
-      const wrapper = document.querySelector('.tree-wrapper');
-      if (!tree || !wrapper) return;
+      if (!tree) return;
 
-      // Reset scale to measure natural width
-      tree.style.transform = 'none';
-
-      // Double RAF + timeout for reliable mobile rendering
+      // Just draw connectors, no scaling - let user scroll on mobile
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          setTimeout(() => {
-            const treeWidth = tree.scrollWidth;
-            const containerWidth = wrapper.clientWidth;
-            const padding = 10;
-
-            if (treeWidth > containerWidth - padding) {
-              const scale = (containerWidth - padding) / treeWidth;
-              const finalScale = Math.max(0.4, scale);
-              tree.style.transform = `scale(${finalScale})`;
-              tree.style.transformOrigin = 'top center';
-            } else {
-              tree.style.transform = 'none';
-            }
-          }, 50);
+          drawDuplicateConnectors();
         });
       });
     }
@@ -858,11 +834,8 @@
       if (layout === 'flat') {
         renderFlatView();
       } else {
-        // Scale and redraw connectors after layout settles
-        setTimeout(() => {
-          scaleNestedTreeToFit();
-          drawDuplicateConnectors();
-        }, 50);
+        // Scale tree to fit (also draws connectors)
+        setTimeout(scaleNestedTreeToFit, 50);
       }
     }
 
@@ -929,10 +902,7 @@
 
     window.addEventListener('resize', () => {
       if (currentLayout === 'flat') renderFlatView();
-      else {
-        scaleNestedTreeToFit();
-        drawDuplicateConnectors();
-      }
+      else scaleNestedTreeToFit();
     });
   </script>
 </body>
