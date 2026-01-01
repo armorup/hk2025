@@ -71,44 +71,31 @@ class FamilyTreeLayout {
       // Generation 0: Great-grandparents (roots) - leftmost column
       roots: [
         {
-          id: 'ham-popo',
-          partners: ['X2', 'X1'],
-          childUnits: [
-            { id: 'yan-fun', partners: ['F7', 'M11'], childUnits: [], isNephew: true }
-          ]
-        },
-        {
-          id: 'unclema-auntma',
-          partners: ['F3', 'F2'],
-          childUnits: [
-            {
-              id: 'adrien-ada',
-              partners: ['M3', 'M4'],
-              childUnits: [
-                { id: 'siah', single: 'B3', childUnits: [] }
-              ]
-            }
-          ]
-        },
-        {
-          id: 'peter-cora',
-          partners: ['M7', 'M8'],
-          childUnits: [
-            { id: 'hong', single: 'M1', childUnits: [] },
-            { id: 'michelle', single: 'M9', childUnits: [] }
-          ]
-        },
-        {
-          id: 'siukee',
-          partners: ['X6'],
-          childUnits: [
-            { id: 'rex', single: 'M2', childUnits: [] }
-          ]
-        },
-        {
           id: 'yehyeh-mama',
           partners: ['X4', 'X5'],
           childUnits: [
+            {
+              id: 'gooma2',
+              single: 'F4',
+              childUnits: [
+                { id: 'eldestson-daisou', partners: ['X7', 'M12'], childUnits: [], dashed: true },
+                { id: 'ahfat-yeesou', partners: ['M14', 'M13'], childUnits: [], dashed: true }
+              ]
+            },
+            {
+              id: 'gooma3',
+              single: 'X3',
+              childUnits: [
+                {
+                  id: 'keith-manyi',
+                  partners: ['F1', 'M6'],
+                  childUnits: [
+                    { id: 'natalie', single: 'M10', childUnits: [] }
+                  ]
+                },
+                { id: 'cherry', single: 'M5', childUnits: [] }
+              ]
+            },
             {
               id: 'ernest-amy',
               partners: ['F5', 'F6'],
@@ -132,27 +119,40 @@ class FamilyTreeLayout {
                   ]
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          id: 'ham-popo',
+          partners: ['X2', 'X1'],
+          childUnits: [
+            { id: 'yan-fun', partners: ['F7', 'M11'], childUnits: [], isNephew: true }
+          ]
+        },
+        {
+          id: 'peter-cora',
+          partners: ['M7', 'M8'],
+          childUnits: [
+            { id: 'hong', single: 'M1', childUnits: [] },
+            { id: 'michelle', single: 'M9', childUnits: [] }
+          ]
+        },
+        {
+          id: 'siukee',
+          partners: ['X6'],
+          childUnits: [
+            { id: 'rex', single: 'M2', childUnits: [] }
+          ]
+        },
+        {
+          id: 'unclema-auntma',
+          partners: ['F3', 'F2'],
+          childUnits: [
             {
-              id: 'gooma2',
-              single: 'F4',
+              id: 'adrien-ada',
+              partners: ['M3', 'M4'],
               childUnits: [
-                { id: 'eldestson-daisou', partners: ['X7', 'M12'], childUnits: [], dashed: true },
-                { id: 'ahfat-yeesou', partners: ['M14', 'M13'], childUnits: [], dashed: true }
-              ]
-            },
-            {
-              id: 'gooma3',
-              single: 'X3',
-              childUnits: [
-                {
-                  id: 'keith-manyi',
-                  partners: ['F1', 'M6'],
-                  childUnits: [
-                    { id: 'natalie', single: 'M10', childUnits: [] }
-                  ]
-                },
-                { id: 'cherry', single: 'M5', childUnits: [] }
+                { id: 'siah', single: 'B3', childUnits: [] }
               ]
             }
           ]
