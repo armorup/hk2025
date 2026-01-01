@@ -16,7 +16,7 @@
     {"id": "M2", "name": "Rex", "gender": "M", "chinese": "悅恆"},
     {"id": "M3", "name": "Adrien", "gender": "M"},
     {"id": "M4", "name": "Ada", "gender": "F"},
-    {"id": "M5", "name": "Cherry", "gender": "F", "aka": "Lai-Yi", "chinese": "麗兒"},
+    {"id": "M5", "name": "Cherry", "gender": "F", "chinese": "麗兒"},
     {"id": "M6", "name": "Man-Yi", "gender": "F", "chinese": "敏兒"},
     {"id": "M7", "name": "Peter", "gender": "M"},
     {"id": "M8", "name": "Cora", "gender": "F"},
@@ -39,7 +39,7 @@
     {"id": "X4", "name": "yehyeh", "gender": "M", "inPhoto": false},
     {"id": "X5", "name": "mama", "gender": "F", "inPhoto": false},
     {"id": "X6", "name": "Siu-Kee", "gender": "M", "inPhoto": false},
-    {"id": "X7", "name": "Gooma2's eldest son", "gender": "M", "inPhoto": false},
+    {"id": "X7", "name": "Eldest Son", "gender": "M", "inPhoto": false},
     {"id": "X8", "name": "Popo's parents", "gender": "M", "inPhoto": false}
   ],
   "families": [
@@ -58,9 +58,9 @@
     {"partners": ["X3"], "children": ["M6", "M5"], "note": "Gooma3 -> Man-Yi, Cherry"},
     {"partners": ["M14", "M13"], "children": [], "note": "AhFat & Yee-sou"},
     {"partners": ["F4"], "children": ["X7", "M14"], "note": "Gooma2 -> eldest son, AhFat (2nd son)"},
-    {"partners": ["X7", "M12"], "children": [], "note": "Gooma2's eldest son & Dai-sou"},
+    {"partners": ["X7", "M12"], "children": [], "note": "Eldest Son & Dai-sou"},
     {"partners": ["X6"], "children": ["M2"], "note": "Siu-Kee -> Rex"}
   ],
   "hidden": [],
-  "notes": "X-prefix = connectors not in photo. X7 = Gooma2's eldest son (name unknown). X8 = Popo's parents (shows Popo & Uncle Ma as siblings)."
+  "notes": "X-prefix = connectors not in photo. X7 = Gooma2's eldest son (name unknown). X8 = Popo's parents (shows Popo & Uncle Ma as siblings). Eldest son has solid line, AhFat has dashed (uncertain)."
 }

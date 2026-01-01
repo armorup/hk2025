@@ -273,6 +273,10 @@
       background: none;
       border-left: 2px dashed #999;
     }
+    .nested-view .children .person.dashed-line::before {
+      background: none;
+      border-left: 2px dashed #999;
+    }
     .nested-view .children.single::before { display: none; }
     .nested-view .spacer { width: 40px; }
     .nested-view .duplicate-connectors {
@@ -444,18 +448,18 @@
       <div class="row" style="margin-top: 25px;">
         <!-- Gooma2's family (leftmost - Yehyeh/Mama line) -->
         <div class="family-unit">
-          <div class="has-children dashed">
+          <div class="has-children">
             <div class="person">
               <div class="photo female" style="background-image: url('thumbs/photos/f4.png')"></div>
               <div class="name">Gooma2</div>
             </div>
           </div>
-          <div class="children multi dashed">
+          <div class="children multi">
             <div class="person">
               <div class="photo male no-photo"></div>
               <div class="name">Eldest Son</div>
             </div>
-            <div class="person">
+            <div class="person dashed-line">
               <div class="photo male" style="background-image: url('thumbs/photos/m14.png')"></div>
               <div class="name">AhFat</div>
             </div>
