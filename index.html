@@ -211,7 +211,10 @@
 
     /* ========== NESTED LAYOUT ========== */
     .nested-view { display: none; }
-    .nested-view.active { display: block; }
+    .nested-view.active {
+      display: flex;
+      justify-content: center;
+    }
 
     .nested-view .tree {
       display: inline-flex;
@@ -731,28 +734,30 @@
     // ========== SCALE NESTED TREE TO FIT ==========
     function scaleNestedTreeToFit() {
       const tree = document.querySelector('.nested-view .tree');
-      if (!tree) return;
+      const wrapper = document.querySelector('.tree-wrapper');
+      if (!tree || !wrapper) return;
 
       // Reset scale to measure natural width
-      tree.style.transform = 'scale(1) translateX(0)';
+      tree.style.transform = 'none';
 
-      // Wait for layout
+      // Double RAF + timeout for reliable mobile rendering
       requestAnimationFrame(() => {
-        const treeWidth = tree.scrollWidth;
-        const containerWidth = document.querySelector('.tree-wrapper').clientWidth;
-        const padding = 20; // Some breathing room
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            const treeWidth = tree.scrollWidth;
+            const containerWidth = wrapper.clientWidth;
+            const padding = 10;
 
-        if (treeWidth > containerWidth - padding) {
-          const scale = (containerWidth - padding) / treeWidth;
-          const finalScale = Math.max(0.5, scale);
-          const scaledWidth = treeWidth * finalScale;
-          const offsetX = (containerWidth - scaledWidth) / 2;
-          tree.style.transform = `translateX(${offsetX}px) scale(${finalScale})`;
-        } else {
-          // Center if smaller than container
-          const offsetX = (containerWidth - treeWidth) / 2;
-          tree.style.transform = `translateX(${Math.max(0, offsetX)}px) scale(1)`;
-        }
+            if (treeWidth > containerWidth - padding) {
+              const scale = (containerWidth - padding) / treeWidth;
+              const finalScale = Math.max(0.4, scale);
+              tree.style.transform = `scale(${finalScale})`;
+              tree.style.transformOrigin = 'top center';
+            } else {
+              tree.style.transform = 'none';
+            }
+          }, 50);
+        });
       });
     }
 
